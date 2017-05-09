@@ -13,7 +13,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
           var client = new cassandra.Client({
-                  contactPoints: ["172.29.0.152"],
+                  contactPoints: ["127.0.0.1"],
                   keyspace: "donnees_urbaines"
               });
 
