@@ -1,7 +1,7 @@
+global.XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 module.exports = function(RED) {
   "use strict";
-  const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest,
-        Rx = require('rxjs'),
+  const Rx = require('rxjs'),
         request = require('request'),
         cassandra = require('cassandra-driver');
 
