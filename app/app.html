@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    RED.nodes.registerType('open-data-wifi',{
+        category: 'function',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        label: function() {
+            return this.name||"open-data-wifi";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="open-data-wifi">
+    <div class="form-row">
+        <p>Save open data wifi</p>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="open-data-wifi">
+    <p>Save open data wifi</p>
+</script>
