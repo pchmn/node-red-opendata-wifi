@@ -13,11 +13,11 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
           var client = new cassandra.Client({
-                  contactPoints: "172.29.0.152",
+                  contactPoints: ["172.29.0.152"],
                   keyspace: "donnees_urbaines"
               });
 
-          var query = 'INSERT INTO donnees_urbaines.opendata_wifi (id, language, start_time, output_octets, input_octets, place, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :place, :duration, :device, :os, :browser)';
+          var query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, place, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :place, :duration, :device, :os, :browser)';
 
           Rx.Observable
             .ajax(API_URL)
