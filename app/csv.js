@@ -11,10 +11,11 @@ const csv = require("csvtojson"),
     var id = 0;
 
     csv()
-      .fromFile("../csv/utilisations_mensuelles_des_hotspots_paris_wi-fi.csv")
+      .fromFile("csv/utilisations_mensuelles_des_hotspots_paris_wi-fi.csv")
       .on('json', (record) => {
           // combine csv header row and csv line to a json object
           // jsonObj.a ==> 1 or 4
+  
           var params = {
             id: id,
             language: record.langue,
