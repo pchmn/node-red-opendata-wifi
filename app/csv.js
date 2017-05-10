@@ -7,12 +7,12 @@ module.exports = function() {
             keyspace: "donnees_urbaines"
         });
 
-    var query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, site, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :site, :duration, :device, :os, :browser)';    
+    var query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, site, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :site, :duration, :device, :os, :browser)';
 
     var id = 0;
 
     csv()
-      .fromFile("file.csv")
+      .fromFile("../csv/utilisations_mensuelles_des_hotspots_paris_wi-fi.csv")
       .on('json', (record) => {
           // combine csv header row and csv line to a json object
           // jsonObj.a ==> 1 or 4
