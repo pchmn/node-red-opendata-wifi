@@ -1,7 +1,6 @@
 const csv = require("csvtojson"),
       cassandra = require('cassandra-driver');
 
-module.exports = function() {
     var client = new cassandra.Client({
             contactPoints: ["127.0.0.1"],
             keyspace: "donnees_urbaines"
@@ -40,6 +39,8 @@ module.exports = function() {
             })
       })
       .on('done', (error) =>{
+        if(error)
+          console.log(error)
+        else
           console.log('end')
       })
-}
