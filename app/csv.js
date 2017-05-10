@@ -15,7 +15,7 @@ const csv = require("csvtojson"),
       .on('json', (record) => {
           // combine csv header row and csv line to a json object
           // jsonObj.a ==> 1 or 4
-  
+
           var params = {
             id: id,
             language: record.langue,
@@ -31,7 +31,7 @@ const csv = require("csvtojson"),
 
           client.execute(query, params, { prepare: true })
             .then(result => {
-              console.log(results.rows);
+              console.log(result.rows);
               id++;
             })
             .catch(err => {
