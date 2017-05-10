@@ -26,7 +26,7 @@ module.exports = function(RED) {
 
               records.forEach(function(record) {
                 var params = {
-                  id: record.datasetid,
+                  id: record.recordid,
                   language: record.fields.langue,
                   start_time: record.fields.start_time,
                   output_octets: record.fields.output_octets,
