@@ -3,7 +3,9 @@ module.exports = function(RED) {
   "use strict";
   const Rx = require('rxjs'),
         request = require('request'),
-        cassandra = require('cassandra-driver');
+        cassandra = require('cassandra-driver'),
+        http = require("http"),
+        fs = require("fs");
 
   const API_URL = "https://opendata.paris.fr/api/records/1.0/search/?dataset=utilisations_mensuelles_des_hotspots_paris_wi-fi&sort=start_time&facet=start_time&facet=os&facet=browser&facet=device&facet=langue&facet=site&rows=20";
 
