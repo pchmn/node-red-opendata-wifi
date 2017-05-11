@@ -41,7 +41,7 @@ function saveToCassandra() {
       start_time: record.fields.start_time,
       output_octets: record.fields.output_octets,
       input_octets: record.fields.input_octets,
-      place: record.fields.site,
+      site: record.fields.site,
       duration: record.fields.duration,
       device: record.fields.device,
       os: record.fields.os,
