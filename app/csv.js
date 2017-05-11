@@ -23,7 +23,7 @@ function download(url, dest, cb) {
 }
 
 function saveToCassandra() {
-  const records = require('csv/data.json');
+  const records = require('../csv/data.json');
 
   var client = new cassandra.Client({
             contactPoints: ["127.0.0.1"],
@@ -59,12 +59,14 @@ function saveToCassandra() {
   })
 }
 
-download(
+saveToCassandra();
+
+/*download(
   "https://opendata.paris.fr/explore/dataset/utilisations_mensuelles_des_hotspots_paris_wi-fi/download/?format=json&timezone=Europe/Berlin", 
   "csv/data.json", 
   function() {
     console.log("donwloaded");
-});
+});*/
 
 
 
