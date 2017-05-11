@@ -19,7 +19,7 @@ module.exports = function(RED) {
                   keyspace: "donnees_urbaines"
               });
 
-          var query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, place, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :place, :duration, :device, :os, :browser)';
+          var query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, site, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :site, :duration, :device, :os, :browser)';
 
           Rx.Observable
             .ajax(API_URL)
@@ -33,7 +33,7 @@ module.exports = function(RED) {
                   start_time: record.fields.start_time,
                   output_octets: record.fields.output_octets,
                   input_octets: record.fields.input_octets,
-                  place: record.fields.site,
+                  site: record.fields.site,
                   duration: record.fields.duration,
                   device: record.fields.device,
                   os: record.fields.os,
