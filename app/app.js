@@ -24,7 +24,7 @@ module.exports = function(RED) {
         }
 
         var client = new cassandra.Client({
-            contactPoints: [node.host],
+            contactPoints: node.host.replace(/ /g, "").split(","),
             keyspace: node.keyspace,
             authProvider: authProvider
         });
