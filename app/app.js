@@ -7,19 +7,32 @@ module.exports = function(RED) {
         http = require("http"),
         fs = require("fs");
 
-  const API_URL = "https://opendata.paris.fr/api/records/1.0/search/?dataset=utilisations_mensuelles_des_hotspots_paris_wi-fi&sort=start_time&facet=start_time&facet=os&facet=browser&facet=device&facet=langue&facet=site&rows=5000";
-
     function SaveOpenDataWifi(config) {
         RED.nodes.createNode(this, config);
+        this.host = config.host;
+        this.port = config.port;
+        this.keyspace = config.keyspace;
+        this.rows = config.rows;
         var node = this;
 
-        node.on('input', function(msg) {
-          var client = new cassandra.Client({
-                  contactPoints: ["127.0.0.1"],
-                  keyspace: "donnees_urbaines"
-              });
+        var authProvider = null;
+        if (node.credentials.user) {
+            authProvider = new cassandra.auth.PlainTextAuthProvider(
+                node.credentials.user,
+                node.credentials.password
+            );
+        }
 
-          var query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, site, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :site, :duration, :device, :os, :browser)';
+        var client = new cassandra.Client({
+            contactPoints: [node.host],
+            keyspace: node.keyspace,
+            authProvider: authProvider
+        });
+
+        node.on('input', function(msg) {
+
+          const API_URL = "https://opendata.paris.fr/api/records/1.0/search/?dataset=utilisations_mensuelles_des_hotspots_paris_wi-fi&sort=start_time&facet=start_time&facet=os&facet=browser&facet=device&facet=langue&facet=site&rows="+node.rows;
+          const query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, site, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :site, :duration, :device, :os, :browser)';
 
           Rx.Observable
             .ajax(API_URL)
