@@ -66,5 +66,10 @@ module.exports = function(RED) {
 
         });
     }
-    RED.nodes.registerType("open-data-wifi", SaveOpenDataWifi);
+    RED.nodes.registerType("open-data-wifi", SaveOpenDataWifi, {
+        credentials: {
+            user: {type: "text"},
+            password: {type: "password"}
+        }
+    });
 }
