@@ -9,12 +9,12 @@ module.exports = function(RED) {
 
     function SaveOpenDataWifi(config) {
         RED.nodes.createNode(this, config);
-
         this.hosts = config.hosts;
         this.port = config.port;
         this.keyspace = config.keyspace;
+        this.rows = config.rows;
         var node = this;
-        console.log("config", config);
+        console.log("config", this.hosts);
 
         var authProvider = null;
         if (node.credentials.user) {
