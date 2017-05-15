@@ -31,9 +31,9 @@
 
 <script type="text/javascript">
     RED.nodes.registerType('open-data-wifi',{
-        category: 'input',
+        category: 'function',
         color: '#A6BBCF',
-        inputs: 0,
+        inputs: 1,
         outputs: 1,
         defaults: {
             host: {value: "127.0.0.1", required:true},
@@ -45,7 +45,7 @@
             user: {type: "text"},
             password: {type: "password"}
         },
-        icon: "inject.png",
+        icon: "function.png",
         label: function() {
             return "open-data-wifi";
         }
