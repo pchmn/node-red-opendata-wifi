@@ -24,6 +24,10 @@
 
     <h4>Open data config</h4>
     <div class="form-row">
+        <label for="node-input-date"><i class="fa fa-list-ol"></i> Date</label>
+        <input type="date" id="node-input-date">
+    </div>
+    <div class="form-row">
         <label for="node-input-rows"><i class="fa fa-list-ol"></i> Number of rows</label>
         <input type="number" id="node-input-rows">
     </div>
@@ -39,7 +43,8 @@
             host: {value: "127.0.0.1", required:true},
             port: {value: "9042", required:true},
             keyspace: {value: "", required:true},
-            rows: {value: 10}
+            rows: {value: 10},
+            date: {type: "date"}
         },
         credentials: {
             user: {type: "text"},
