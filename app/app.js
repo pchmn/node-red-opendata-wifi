@@ -9,10 +9,11 @@ module.exports = function(RED) {
 
     function SaveOpenDataWifi(config) {
         RED.nodes.createNode(this, config);
-        this.host = config.host;
+
+        this.hosts = config.hosts;
         this.port = config.port;
         this.keyspace = config.keyspace;
-        this.rows = config.rows;
+        var node = this;
         var node = this;
 
         var authProvider = null;
@@ -24,7 +25,7 @@ module.exports = function(RED) {
         }
 
         var client = new cassandra.Client({
-            contactPoints: node.host.replace(/ /g, "").split(","),
+            contactPoints: node.hosts.replace(/ /g, "").split(","),
             keyspace: node.keyspace,
             authProvider: authProvider
         });
