@@ -1,23 +1,28 @@
 <script type="text/x-red" data-template-name="open-data-wifi">
     <div class="form-row">
-        <label for="node-config-input-hosts"><i class="fa fa-globe"></i> Hosts</label>
-        <input type="text" id="node-config-input-hosts">
+        <label for="node-input-hosts"><i class="fa fa-globe"></i> Hosts</label>
+        <input type="text" id="node-input-hosts">
     </div>
     <div class="form-row">
-        <label for="node-config-input-port"><i class="fa fa-random"></i> Port</label>
-        <input type="text" id="node-config-input-port">
+        <label for="node-input-port"><i class="fa fa-random"></i> Port</label>
+        <input type="text" id="node-input-port">
     </div>
         <div class="form-row">
-        <label for="node-config-input-user"><i class="fa fa-user"></i> User</label>
-        <input type="text" id="node-config-input-user">
+        <label for="node-input-user"><i class="fa fa-user"></i> User</label>
+        <input type="text" id="node-input-user">
     </div>
         <div class="form-row">
-        <label for="node-config-input-pass"><i class="fa fa-lock"></i> Password</label>
-        <input type="password" id="node-config-input-password">
+        <label for="node-input-pass"><i class="fa fa-lock"></i> Password</label>
+        <input type="password" id="node-input-password">
     </div>
     <div class="form-row">
-        <label for="node-config-input-keyspace"><i class="fa fa-database"></i> Keyspace</label>
-        <input type="text" id="node-config-input-keyspace">
+        <label for="node-input-keyspace"><i class="fa fa-database"></i> Keyspace</label>
+        <input type="text" id="node-input-keyspace">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-rows"><i class="fa fa-database"></i> Number of rows</label>
+        <input type="number" id="node-input-rows">
     </div>
 </script>
 
@@ -25,10 +30,13 @@
     RED.nodes.registerType('open-data-wifi',{
         category: 'function',
         color: '#a6bbcf',
+        inputs:1,
+        outputs:1,
         defaults: {
             hosts: {value:"127.0.0.1",required:true},
             port: {value:"9042",required:true},
-            keyspace: {value:"",required:true}
+            keyspace: {value:"",required:true},
+            rows: {value: 10}
         },
         credentials: {
             user: {type: "text"},
