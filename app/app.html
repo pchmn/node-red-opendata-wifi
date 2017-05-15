@@ -24,8 +24,12 @@
 
     <h4>Open data config</h4>
     <div class="form-row">
-        <label for="node-input-date"><i class="fa fa-calendar"></i> Date</label>
-        <input type="date" id="node-input-date">
+        <label for="node-input-startTime"><i class="fa fa-calendar"></i> Start time</label>
+        <input type="date" id="node-input-startTime">
+    </div>
+    <div class="form-row">
+        <label for="node-input-stopTime"><i class="fa fa-calendar"></i> Stop time</label>
+        <input type="date" id="node-input-stopTime">
     </div>
     <div class="form-row">
         <label for="node-input-rows"><i class="fa fa-list-ol"></i> Number of rows</label>
@@ -44,7 +48,8 @@
             port: {value: "9042", required:true},
             keyspace: {value: "", required:true},
             rows: {value: 10},
-            date: {type: "date"}
+            startTime: {type: "date"},
+            stopTime: {type: "date"}
         },
         credentials: {
             user: {type: "text"},

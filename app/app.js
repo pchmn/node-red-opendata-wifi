@@ -12,7 +12,8 @@ module.exports = function(RED) {
         this.host = config.host;
         this.port = config.port;
         this.keyspace = config.keyspace;
-        this.date = config.date;
+        this.startTime = config.startTime;
+        this.stopTime = config.stopTime;
         this.rows = config.rows;
         var node = this;
 
@@ -32,7 +33,7 @@ module.exports = function(RED) {
 
         node.on('input', function(msg) {
 
-          const API_URL = "https://opendata.paris.fr/api/records/1.0/search/?dataset=utilisations_mensuelles_des_hotspots_paris_wi-fi&sort=start_time&facet=start_time&facet=os&facet=browser&facet=device&facet=langue&facet=site&rows="+node.rows+(node.date ? "&refine.start_time=" + node.date: "");
+          const API_URL = "https://opendata.paris.fr/api/records/1.0/search/?dataset=utilisations_mensuelles_des_hotspots_paris_wi-fi&sort=start_time&facet=start_time&facet=os&facet=browser&facet=device&facet=langue&facet=site&rows="+node.rows+(node.startTime ? "&refine.start_time=" + node.startTime: "")+(node.stopTime ? "&refine.stop_time=" + node.stopTime: "");
           const query = 'INSERT INTO opendata_wifi (id, language, start_time, output_octets, input_octets, site, duration, device, os, browser) VALUES (:id, :language, :start_time, :output_octets, :input_octets, :site, :duration, :device, :os, :browser)';
 
           Rx.Observable
