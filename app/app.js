@@ -14,7 +14,7 @@ module.exports = function(RED) {
         this.port = config.port;
         this.keyspace = config.keyspace;
         var node = this;
-        var node = this;
+        console.log("hosts", this.hosts);
 
         var authProvider = null;
         if (node.credentials.user) {
