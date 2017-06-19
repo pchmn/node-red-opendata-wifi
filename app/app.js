@@ -41,7 +41,10 @@ module.exports = function(RED) {
             .subscribe(records => {
 
               records.forEach(function(record) {
-                var params = {
+                msg.payload = record;
+                msg.dataType = "OPEN_DATA_WIFI";
+                node.send(msg);
+                /*var params = {
                   id: record.recordid,
                   language: record.fields.langue,
                   start_time: record.fields.start_time,
@@ -61,7 +64,7 @@ module.exports = function(RED) {
                   })
                   .catch(err => {
                     node.error(err, msg);
-                  })
+                  })*/
               })
             });
 
