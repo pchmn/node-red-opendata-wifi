@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-opendata-wifi",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A sample node for node-red",
   "dependencies": {
     "cassandra-driver": "^3.2.1",

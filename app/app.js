@@ -42,7 +42,7 @@ module.exports = function(RED) {
 
               records.forEach(function(record) {
                 msg.payload = record;
-                msg.dataType = "OPEN_DATA_WIFI";
+                msg.dataType = "OPEN_DATA_WITHOUT_LOCATION";
                 node.send(msg);
                 /*var params = {
                   id: record.recordid,
